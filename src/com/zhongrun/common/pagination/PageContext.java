@@ -12,7 +12,7 @@ import java.util.List;
 public class PageContext<E> implements IPageContext<E>{
 
     private int pageSize;//每页包含的记录数
-    private List<E> items;
+    private List<E> items;//全部记录
     
     public PageContext(List<E> items) {
         this(items, DEFAULT_PAGE_SIZE);
