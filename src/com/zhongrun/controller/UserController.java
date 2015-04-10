@@ -50,9 +50,6 @@ public class UserController extends BaseController{
 		List<Ad> adList = new ArrayList<Ad>();
 		for(int i=0;i<8;i++){			
 			Ad ad = new Ad();
-			ad.setActionType(1);
-			ad.setAdAddTime(new Date().toString());
-			ad.setAdName("AAA"+i);
 			adList.add(ad);
 		}
 		return adList;
