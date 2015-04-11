@@ -17,7 +17,7 @@ import com.zhongrun.common.model.AbstractModel;
 @Entity
 @Proxy(lazy = true)
 @Table(name = "ad")
-public class Ad extends AbstractModel implements java.io.Serializable {
+public class Ad extends AbstractModel {
 
 	// Fields
 
