@@ -1,10 +1,13 @@
 package com.zhongrun.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -15,185 +18,172 @@ import com.zhongrun.common.model.AbstractModel;
 @Entity
 @Proxy(lazy = true)
 @Table(name = "ad")
-public class Ad extends AbstractModel implements java.io.Serializable {
+public class Ad extends AbstractModel {
 
 	// Fields
+	/*
+	 * 此时主键id的增长是按照hibernate自动处理的方式，而并非数据库中定义的sequence来处理。
+	 * 必须加allocationSize=1,initialValue=1这两项配置才可以解决上述问题。
+	 */
 
 	private static final long serialVersionUID = -6132117804511468562L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	@Column(name="adTypeId")
-	private int adTypeId;
+	@SequenceGenerator(name = "ADPK", allocationSize=1, initialValue=1, sequenceName = "SEQ_AD")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator = "ADPK")
+	private Integer adId;
+	@Column(name="userId")
+	private Integer userId;
 	@Column(name="adName")
 	private String adName;
-	@Column(name="adImage")
-	private String adImage;
-	@Column(name="actionType")
-	private int actionType;
-	@Column(name="actionUri")
-	private String actionUri;
-	@Column(name="adPriority")
-	private int adPriority;
-	@Column(name="updateTime")
-	private String updateTime;
-	@Column(name="adState")
-	private int adState;
-	@Column(name="adAddTime")
-	private String adAddTime;
+	@Column(name="aliasName")
+	private String aliasName;
+	@Column(name="adType")
+	private Integer adType;
+	@Column(name="startDate")
+	private Timestamp startDate;
+	@Column(name="endDate")
+	private Timestamp endDate;
+	@Column(name="budget")
+	private Double budget;
+	@Column(name="memo")
+	private String memo;
+	@Column(name="verifyStatus")
+	private Integer verifyStatus;
+	@Column(name="verifyDesc")
+	private String verifyDesc;
+	@Column(name="status")
+	private Integer status;
+	@Column(name="verifyTime")
+	private Timestamp verifyTime;
+	@Column(name="adminId")
+	private Integer adminId;
+	@Column(name="addTime")
+	private Timestamp addTime;
+	
 	@Transient
 	private String adTypeName;
 
-	/**
-	 * @return the id
-	 */
 	
-	public int getId() {
-		return id;
+
+	public Integer getAdId() {
+		return adId;
 	}
 
-	/**
-	 * @return the adTypeId
-	 */
-	public int getAdTypeId() {
-		return adTypeId;
+	public void setAdId(Integer adId) {
+		this.adId = adId;
 	}
 
-	/**
-	 * @return the adName
-	 */
 	public String getAdName() {
 		return adName;
 	}
 
-	/**
-	 * @return the adImage
-	 */
-	public String getAdImage() {
-		return adImage;
-	}
-
-	/**
-	 * @return the actionType
-	 */
-	public int getActionType() {
-		return actionType;
-	}
-
-	/**
-	 * @return the actionUri
-	 */
-	public String getActionUri() {
-		return actionUri;
-	}
-
-	/**
-	 * @return the adPriority
-	 */
-	public int getAdPriority() {
-		return adPriority;
-	}
-
-	/**
-	 * @return the updateTime
-	 */
-	public String getUpdateTime() {
-		return updateTime;
-	}
-
-	/**
-	 * @return the adState
-	 */
-	public int getAdState() {
-		return adState;
-	}
-
-	/**
-	 * @return the adAddTime
-	 */
-	public String getAdAddTime() {
-		return adAddTime;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @param adTypeId
-	 *            the adTypeId to set
-	 */
-	public void setAdTypeId(int adTypeId) {
-		this.adTypeId = adTypeId;
-	}
-
-	/**
-	 * @param adName
-	 *            the adName to set
-	 */
 	public void setAdName(String adName) {
 		this.adName = adName;
 	}
 
-	/**
-	 * @param adImage
-	 *            the adImage to set
-	 */
-	public void setAdImage(String adImage) {
-		this.adImage = adImage;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	/**
-	 * @param actionType
-	 *            the actionType to set
-	 */
-	public void setActionType(int actionType) {
-		this.actionType = actionType;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	/**
-	 * @param actionUri
-	 *            the actionUri to set
-	 */
-	public void setActionUri(String actionUri) {
-		this.actionUri = actionUri;
+	public String getAliasName() {
+		return aliasName;
 	}
 
-	/**
-	 * @param adPriority
-	 *            the adPriority to set
-	 */
-	public void setAdPriority(int adPriority) {
-		this.adPriority = adPriority;
+	public void setAliasName(String aliasName) {
+		this.aliasName = aliasName;
 	}
 
-	/**
-	 * @param updateTime
-	 *            the updateTime to set
-	 */
-	public void setUpdateTime(String updateTime) {
-		this.updateTime = updateTime;
+	public Integer getAdType() {
+		return adType;
 	}
 
-	/**
-	 * @param adState
-	 *            the adState to set
-	 */
-	public void setAdState(int adState) {
-		this.adState = adState;
+	public void setAdType(Integer adType) {
+		this.adType = adType;
 	}
 
-	/**
-	 * @param adAddTime
-	 *            the adAddTime to set
-	 */
-	public void setAdAddTime(String adAddTime) {
-		this.adAddTime = adAddTime;
+	public Timestamp getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Timestamp startDate) {
+		this.startDate = startDate;
+	}
+
+	public Timestamp getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Timestamp endDate) {
+		this.endDate = endDate;
+	}
+
+	public Double getBudget() {
+		return budget;
+	}
+
+	public void setBudget(Double budget) {
+		this.budget = budget;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+	public Integer getVerifyStatus() {
+		return verifyStatus;
+	}
+
+	public void setVerifyStatus(Integer verifyStatus) {
+		this.verifyStatus = verifyStatus;
+	}
+
+	public String getVerifyDesc() {
+		return verifyDesc;
+	}
+
+	public void setVerifyDesc(String verifyDesc) {
+		this.verifyDesc = verifyDesc;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Timestamp getVerifyTime() {
+		return verifyTime;
+	}
+
+	public void setVerifyTime(Timestamp verifyTime) {
+		this.verifyTime = verifyTime;
+	}
+
+	public Integer getAdminId() {
+		return adminId;
+	}
+
+	public void setAdminId(Integer adminId) {
+		this.adminId = adminId;
+	}
+
+	public Timestamp getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(Timestamp addTime) {
+		this.addTime = addTime;
 	}
 
 	/**
