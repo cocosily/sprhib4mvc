@@ -85,6 +85,8 @@
         <tx:attributes>
             <tx:method name="statis*" propagation="REQUIRED" rollback-for="Exception"/>
             <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
             <tx:method name="*" read-only="true" />
         </tx:attributes>
     </tx:advice>
@@ -99,8 +101,8 @@
 	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
 	    <property name="patterns">
 	        <list>
-	            <value>com.zhongrun.service.*</value>
-	            <value>com.zhongrun.dao.*</value>
+	            <value>com.zhongrun.service.impl.*</value>
+	            <value>com.zhongrun.dao.impl.*</value>
 	        </list>
 	    </property>
 	</bean>

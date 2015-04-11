@@ -74,7 +74,12 @@
   	<filter-name>sessionFilter</filter-name>
   	<url-pattern>*.do</url-pattern>
   </filter-mapping>
-  
+  <jsp-config>
+  	<taglib>
+  	<taglib-uri>/page.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tld/page.tld</taglib-location>
+    </taglib>
+  </jsp-config>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

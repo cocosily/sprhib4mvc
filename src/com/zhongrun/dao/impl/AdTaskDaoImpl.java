@@ -3,10 +3,11 @@ package com.zhongrun.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+
+import com.zhongrun.common.dao.hibernate4.BaseHibernateDao;
 import com.zhongrun.common.dao.util.ConditionQuery;
 import com.zhongrun.common.dao.util.OrderBy;
 import com.zhongrun.dao.IAdTaskDao;
-import com.zhongrun.dao.hibernate4.BaseHibernateDao;
 import com.zhongrun.model.AdTask;
 
 public class AdTaskDaoImpl extends BaseHibernateDao<AdTask, Integer> implements

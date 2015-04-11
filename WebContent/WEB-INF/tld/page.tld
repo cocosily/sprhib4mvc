@@ -5,10 +5,9 @@
 <taglib>
    <tlib-version>2.0</tlib-version>
    <jsp-version>1.2</jsp-version>
-   <short-name>common</short-name>
-   <uri>http://javass.cn/common/</uri>
-   <display-name>Common Tag</display-name>
-   <description>Common Tag library</description>
+   <short-name>page</short-name>
+   <display-name>Page Tag</display-name>
+   <description>Page Tag library</description>
 
    <tag>
      <name>page</name>
