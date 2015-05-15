@@ -1,32 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp"%>
-
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>欢迎</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+  <title>欢迎</title>
+
+  <!--dynamic table-->
+  <link href="js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="js/data-tables/DT_bootstrap.css" />
 </head>
 <body>
-ad list table
-
-	<table class="list" width="100%" layoutH="115" align="center">
+	<section>
+	   <section class="panel">
+        <header class="panel-heading">
+            Dynamic Table
+            <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+             </span>
+        </header>
+        <div class="panel-body">
+        <div class="adv-table">
+	<table class="display table table-bordered table-striped" id="dynamic-table" >
 		<thead>
 			<tr>
-				<th width="50">编号</th>
-				<th width="100">广告名称</th>
-				<th width="100">广告别名</th>
-				<th width="100">开始日期</th>					
-				<th width="100">结束日期</th>
-				<th width="70">广告预算</th>
-				<th width="70">审核状态</th>
-				<th width="70">运行状态</th>
-				<th width="100">添加日期</th>
-				<th width="100">操作</th>
+				<th>编号</th>
+				<th>广告名称</th>
+				<th>广告别名</th>
+				<th>开始日期</th>					
+				<th>结束日期</th>
+				<th>广告预算</th>
+				<th>审核状态</th>
+				<th>运行状态</th>
+				<th>添加日期</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${page.items}" var="ad" >
-				<tr> 						
+				<tr class="gradeA"> 						
 					<td>${ad.adId }</td>
 					<td>${ad.adName}
 					</td>
@@ -74,15 +91,15 @@ ad list table
 						<fmt:parseDate value="${ad.addTime}"  var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
 						<fmt:formatDate value="${date}" type="date"  pattern="yyyy-MM-dd"/>
 					</td>
-					<td>
-						<a title="修改广告产品" href="${pageContext.request.contextPath }/publish/ad!edit.action?flag=edit&ad.adId=${ad.adId}" target="navTab" rel="editAdPlan"><span style="color:blue">修改</span></a>&nbsp;
-						<a title="查看广告物料" href="${pageContext.request.contextPath }/material/admaterial!list.action?adMaterial.adId=${ad.adId}" target="navTab" rel="addMaterial"><span style="color:blue">广告物料</span></a>
-					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		</table>
 		<!-- <page:pageV2 url="ad/newlist" bean="page" number="5" optimize="true" /> -->
 		<page:page url="/ad/newlist" bean="page" showJump="true" optimize="true" />
+		</div>
+		</div>
+		</section>
+	</section>
 </body>
 </html>
