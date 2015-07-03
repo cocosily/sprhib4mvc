@@ -1,8 +1,6 @@
 package com.zhongrun.controller;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,14 +44,14 @@ public class AdController extends BaseController{
 	 * model view 返回jsp 页面
 	 * @return
 	 */
-	@RequestMapping(value = "/newlist", method = {RequestMethod.GET})
-	public ModelAndView getAdList(int pn){
+	@RequestMapping(value = "/newlist", method = {RequestMethod.POST})
+	public ModelAndView getAdList(@RequestParam(value = "pn", required = false) Integer pn){
 		ModelAndView mv;
 		try {
  			mv = new ModelAndView("ad/adListNew");
 			List<Ad> adList = adService.getAdList();
 			IPageContext<Ad> pageCont = new PageContext<Ad>(adList);
-			pn = pn < 1 ? 1 : pn;
+			pn = null == pn ? 1 : pn;
 			Page<Ad> page = pageCont.getPage(pn);
 			//page.setContext(pageCont);
 			/*List<Ad> adList = new ArrayList<Ad>();
