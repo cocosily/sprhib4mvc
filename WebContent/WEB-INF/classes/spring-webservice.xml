@@ -20,4 +20,9 @@
   
 	<jaxws:endpoint id="helloWorld" implementor="#helloWorldService"   
   		address="/HelloWorld" /> 
+  		
+  	<bean id="adWebService" class="com.zhongrun.ws.service.impl.AdWebServiceImpl"></bean>  
+  
+	<jaxws:endpoint id="ad" implementor="#adWebService"   
+  		address="/adsvc" /> 
 </beans>
