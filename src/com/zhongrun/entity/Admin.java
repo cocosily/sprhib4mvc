@@ -20,6 +20,10 @@ public class Admin implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1018965531319988582L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="adminId")
