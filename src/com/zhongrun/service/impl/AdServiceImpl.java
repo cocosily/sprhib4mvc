@@ -18,6 +18,7 @@ public class AdServiceImpl implements IAdService {
 //	@Resource(name="adDao")
 	private IAdDao<Ad,Integer> adDao;
 	
+	@Override
 	public List<Ad> getAdList(){
 		
 		//return adDao.getAllAd();
