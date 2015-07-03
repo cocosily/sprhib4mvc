@@ -1,23 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../inc/header.jsp"%>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="ThemeBucket">
-  <link rel="shortcut icon" href="#" type="image/png">
-  <title>欢迎</title>
+<%@page import="com.zhongrun.common.Constant"%>
+<%request.setAttribute("ctx", request.getContextPath());%>
+<%@include file="../inc/taglib.jsp" %>
+
 
   <!--dynamic table-->
-  <link href="js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-  <link href="js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-  <link rel="stylesheet" href="js/data-tables/DT_bootstrap.css" />
-</head>
-<body>
-	<section>
-	   <section class="panel">
+  <link rel="stylesheet" href="${ctx }/adminex/js/advanced-datatable/css/demo_page.css" />
+  <link rel="stylesheet" href="${ctx }/adminex/js/advanced-datatable/css/demo_table.css" />
+  <link rel="stylesheet" href="${ctx }/adminex/js/data-tables/DT_bootstrap.css" />
+
+    <!-- main content start-->
+
+        <!--body wrapper start-->
+        
+        <div class="row">
+        <div class="col-sm-12">
+        <section class="panel">
         <header class="panel-heading">
             Dynamic Table
             <span class="tools pull-right">
@@ -27,7 +25,7 @@
         </header>
         <div class="panel-body">
         <div class="adv-table">
-	<table class="display table table-bordered table-striped" id="dynamic-table" >
+        <table  class="display table table-bordered table-striped" id="dynamic-table">
 		<thead>
 			<tr>
 				<th>编号</th>
@@ -95,11 +93,18 @@
 			</c:forEach>
 		</tbody>
 		</table>
-		<!-- <page:pageV2 url="ad/newlist" bean="page" number="5" optimize="true" /> -->
-		<page:page url="/ad/newlist" bean="page" showJump="true" optimize="true" />
 		</div>
-		</div>
-		</section>
-	</section>
-</body>
-</html>
+        </div>
+        </section>
+        </div>
+        </div>
+        
+        <!--body wrapper end-->
+
+    <!-- main content end-->
+
+<!--dynamic table-->
+<script type="text/javascript" src="${ctx }/adminex/js/advanced-datatable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="${ctx }/adminex/js/data-tables/DT_bootstrap.js"></script>
+<!--dynamic table initialization -->
+<script src="${ctx }/adminex/js/dynamic_table_init.js"></script>
