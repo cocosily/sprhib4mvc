@@ -1,7 +1,6 @@
 package com.zhongrun.common.web.filter;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
