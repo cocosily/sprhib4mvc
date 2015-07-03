@@ -270,23 +270,23 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
         return result == null ? 0 : ((Integer) result).intValue();
     }
 
-    protected <T> List<T> list(final String sql, final Object... paramlist) {
-        return listPage(sql, -1, -1, paramlist);
+    protected <T> List<T> list(final String hql, final Object... paramlist) {
+        return listPage(hql, -1, -1, paramlist);
     }
         
     @SuppressWarnings("unchecked")
     public <T> List<T> listByNative(final String nativeSQL, final int pn, final int pageSize,
-            final List<Entry<String, Class<?>>> entityList, 
-            final List<Entry<String, Type>> scalarList, final Object... paramlist) {
+            final Map<String, Class<?>> entityMap, 
+            final Map<String, Type> scalarMap, final Object... paramlist) {
 
         SQLQuery query = getSession().createSQLQuery(nativeSQL);
-        if (entityList != null) {
-            for (Entry<String, Class<?>> entity : entityList) {
+        if (null != entityMap) {
+            for (Entry<String, Class<?>> entity : entityMap.entrySet()) {
                 query.addEntity(entity.getKey(), entity.getValue());
             }
         }
-        if (scalarList != null) {
-            for (Entry<String, Type> entity : scalarList) {
+        if (null != scalarMap) {
+            for (Entry<String, Type> entity : scalarMap.entrySet()) {
                 query.addScalar(entity.getKey(), entity.getValue());
             }
         }
