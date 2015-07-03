@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/sh/static/js/uploadify/css/uploadify.css">
+    <script type="text/javascript" src="http://localhost:8080/sh/static/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="http://localhost:8080/sh/static/js/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+    <meta name="viewport" content="width=device-width">
+    <title>文件上传</title>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        fileUpload();
+      });
+      function fileUpload() {
+        $("#upload").uploadify({
+          "uploader": "http://localhost:8090/sh/user/one",
+          "method": "post",
+          "progressData": "percentage",
+          "swf": "http://localhost:8090/sh/static/js/uploadify/uploadify.swf",
+          "buttonText": "选择要上传的文件",
+          "multi": true,
+          "fileSizeLimit": "100KB",
+          "queueSizeLimit": 5,
+          "successTimeout": 600,
+          "onUploadSuccess": function(file, data, response) {
+            alert('The file ' + file.name 
+            + ' was successfully uploaded with a response of ' 
+            + response + ':' + data);
+          },
+          "onUploadError": function(file, errorCode, errorMsg, 
+            errorString) {
+              alert('The file ' + file.name 
+              + ' could not be uploaded: ' + errorString);
+          },
+          "onSelectError": function() {
+            alert('The file ' + file.name 
+            + ' returned an error and was not added to the queue.');
+          }
+        });
+
+      }
+    </script>
+  </head>
+  <body>
+    <form enctype="multipart/form-data" action="/sh/user/uploadFile" method="post">
+      <input id="upload" name="file" type="file" />
+      <input type="submit" value="上传" >
+    </form>
+  </body>
+</html>
