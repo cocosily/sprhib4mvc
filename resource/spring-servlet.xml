@@ -27,8 +27,9 @@
   	<mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
   	<mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
   	<mvc:resources mapping="/tld/**" location="/WEB-INF/tld/" />
-  	<mvc:resources mapping="/ligerUI/**" location="/ligerUI/" />
+  	<mvc:resources mapping="/adminex/**" location="/adminex/" />
   	<mvc:resources mapping="/demos/**" location="/demos/" />
+  	<mvc:resources mapping="/**" location="/" />
   
   	<!-- json view -->
   	<bean id="defaultJsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
@@ -54,7 +55,7 @@
   	</bean>
   
   	<!-- 总错误处理 -->
-	<bean id="exceptionResolver"
+	<!-- <bean id="exceptionResolver"
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="defaultErrorView">
 			<value>/exception</value>
@@ -67,7 +68,7 @@
 				org.springframework.web.servlet.handler.SimpleMappingExceptionResolver
 			</value>
 		</property>
-	</bean>
+	</bean> -->
 	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" 
 		p:cookieName="clientLanguage"
